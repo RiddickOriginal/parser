@@ -8,7 +8,7 @@ import lombok.Data;
 public class Article {
     //private User user [username, url]
     private String username;
-    //private LocalDate publishDate;
+    //private ZonedDateTime publishDateTime;
     //private List<Category> categories; [name, url]
     private String title;
     private String description;
