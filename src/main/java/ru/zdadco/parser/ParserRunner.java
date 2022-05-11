@@ -1,6 +1,7 @@
 package ru.zdadco.parser;
 
 import ru.zdadco.parser.loader.Loader;
+import ru.zdadco.parser.loader.exception.LoaderException;
 import ru.zdadco.parser.model.Article;
 import ru.zdadco.parser.parser.HtmlParser;
 
@@ -16,9 +17,11 @@ public class ParserRunner {
         HtmlParser parser = new HtmlParser();
 
 
-        String response = loader.load(HABR_URL);
-        List<Article> articles = parser.parse(response);
-        System.out.println();
-
+        try {
+            String response = loader.load(HABR_URL);
+            List<Article> articles = parser.parse(response);
+        } catch (LoaderException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -3,15 +3,17 @@ package ru.zdadco.parser.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 public class Article {
-    //private User user [username, url]
-    private String username;
-    //private ZonedDateTime publishDateTime;
-    //private List<Category> categories; [name, url]
+    private User user;
+    private ZonedDateTime publishDate;
+    private List<Category> categories;
     private String title;
     private String description;
     private String url;
-    //private Statistic statistic [int rep, view, bookmarks, comments]
+    private Statistic statistic;
 }
