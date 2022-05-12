@@ -10,9 +10,7 @@ import ru.zdadco.parser.model.Category;
 import ru.zdadco.parser.model.Statistic;
 import ru.zdadco.parser.model.User;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class HtmlParser {
             List<Category> categories = parseCategories(articleEl);
             Statistic statistic = parseStatistic(articleEl);
 
-            String rawPublishDate = articleEl.select(".tm-article-snippet__datetime-published time").attr("datetime");
+            String rawPublishDate = articleEl.select("time").attr("datetime");
             ZonedDateTime publishDateTime = ZonedDateTime.parse(rawPublishDate);
 
             Elements titleEl = articleEl.select(".tm-article-snippet__title-link");
@@ -84,16 +82,7 @@ public class HtmlParser {
         String rawComments = element.select(".tm-article-comments-counter-link__value").text();
         int comments = Integer.parseInt(rawComments);
 
-//        Integer rating = parseIntValue(element, ".tm-votes-meter__value");
-//        Integer views = parseIntValue(element, ".tm-icon-counter__value");
-//        Integer bookmarks = parseIntValue(element, ".bookmarks-button__counter");
-//        Integer comments = parseIntValue(element, ".tm-article-comments-counter-link__value");
-
         return new Statistic(rating, views, bookmarks, comments);
     }
 
-//    private Integer parseIntValue(Element element, String selector) {
-//        String rawValue = element.select(selector).text();
-//        return Integer.parseInt(rawValue);
-//    }
 }
