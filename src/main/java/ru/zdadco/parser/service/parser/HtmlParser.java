@@ -1,9 +1,10 @@
-package ru.zdadco.parser.parser;
+package ru.zdadco.parser.service.parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 import ru.zdadco.parser.ParserRunner;
 import ru.zdadco.parser.model.Article;
 import ru.zdadco.parser.model.Category;
@@ -14,9 +15,8 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class HtmlParser {
-
-
 
     public List<Article> parse(String html) {
         Document document = Jsoup.parse(html);

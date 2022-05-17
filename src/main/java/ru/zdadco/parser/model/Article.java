@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Article {
+    private Long id;
     private User user;
     private ZonedDateTime publishDate;
     private List<Category> categories;

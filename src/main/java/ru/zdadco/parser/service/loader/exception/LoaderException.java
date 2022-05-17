@@ -1,4 +1,4 @@
-package ru.zdadco.parser.loader.exception;
+package ru.zdadco.parser.service.loader.exception;
 
 public class LoaderException extends Exception {
 
