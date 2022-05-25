@@ -40,6 +40,14 @@ public class ApplicationStorage {
         }
     }
 
+    public Article saveArticle(Article article, User user) {
+        Optional<Article> articleOptional = articleRepository.findByUserAndTitle(user, article.getTitle());
+        if (articleOptional.isEmpty()) {
+            return articleRepository.save(article);
+        }
+        return articleOptional.get();
+    }
+
     public User saveUser(User user) {
         Optional<User> userOptional = userRepository.findByUsername(user.getUsername());
         return userOptional.isEmpty()

@@ -1,18 +1,13 @@
 package ru.zdadco.parser.repository;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.zdadco.parser.model.Article;
-import ru.zdadco.parser.model.Category;
+import ru.zdadco.parser.model.User;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface ArticleRepository extends CrudRepository<Article, Long> {
+public interface ArticleRepository extends JpaRepository<Article, Long> {
+    Optional<Article> findByUserAndTitle(User user, String title);
 }
