@@ -19,13 +19,13 @@ public class Controller {
         return articleService.getNew();
     }
 
-    @GetMapping("/user?userId={userId}&articleId={articleId}") // localhost:8000/article/user?userId=2
-    public List<Article> getArticlesByUser(@RequestParam Long userId, @RequestParam Long articleId) {
-        return List.of();
+    @GetMapping("/user?userId={userId}") // localhost:8000/article/user?userId=2
+    public List<Article> getArticlesByUser(@PathVariable Long userId) {
+        return articleService.getByUser(userId);
     }
 
     @PostMapping("/date") // localhost:8000/article/date {'date': '2022-05-24 00:00:00'}
     public List<Article> getArticlesByDate(@RequestBody Instant date) {
-        return List.of();
+        return articleService.getByPublishDate(date);
     }
 }
