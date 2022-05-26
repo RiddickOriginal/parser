@@ -35,16 +35,15 @@ public class ApplicationStorage {
             article.setUser(user);
             article.setCategories(categories);
             article.setStatistic(savedStatistic);
-            articleRepository.save(article);
+            saveArticle(article, user);
         }
     }
 
-    public Article saveArticle(Article article, User user) {
-        Optional<Article> articleOptional = articleRepository.findByUserAndTitle(user, article.getTitle());
+    public void saveArticle(Article article, User user) {
+        Optional<Article> articleOptional = articleRepository.findByUserAndUrl(user, article.getUrl());
         if (articleOptional.isEmpty()) {
-            return articleRepository.save(article);
+            articleRepository.save(article);
         }
-        return articleOptional.get();
     }
 
     public User saveUser(User user) {

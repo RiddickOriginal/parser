@@ -21,10 +21,11 @@ public class ArticleService {
     public final UserRepository userRepository;
 
     public List<Article> getNew() {
+        Instant instant = Instant.now().minus(1, ChronoUnit.DAYS);
         return articleRepository.findAll().stream()
                 .filter(article -> article
                         .getPublishDate()
-                        .isAfter(Instant.now().minus(1, ChronoUnit.DAYS))
+                        .isAfter(instant)
                 )
                 .collect(Collectors.toList());
     }

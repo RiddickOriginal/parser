@@ -1,5 +1,7 @@
 package ru.zdadco.parser.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +20,8 @@ public class Category {
     private String name;
     private String url;
 
-    @ManyToMany(mappedBy = "categories")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
     private List<Article> articles;
 
     public Category(String name, String url) {

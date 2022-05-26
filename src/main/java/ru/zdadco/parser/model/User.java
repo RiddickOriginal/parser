@@ -1,5 +1,7 @@
 package ru.zdadco.parser.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +20,7 @@ public class User {
     private String username;
     private String url;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Article> articles;
 

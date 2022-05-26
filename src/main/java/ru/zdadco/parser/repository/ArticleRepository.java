@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-    Optional<Article> findByUserAndTitle(User user, String title);
+    Optional<Article> findByUserAndUrl(User user, String url);
 
     List<Article> getAllByUser(User user);
 
